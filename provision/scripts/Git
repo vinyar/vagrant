@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Install Git
+
+sudo apt-get -y install git-core
+
+sudo cat <<EOF  > /root/.ssh/config
+Host github.com
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+EOF
+
+exit 0

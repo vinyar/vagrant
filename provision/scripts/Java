@@ -1,0 +1,4 @@
+#!/bin/bash
+# Installs JRE
+
+apt-get install -y default-jre

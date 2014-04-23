@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Various startup things.
+
+sudo apt-get update
+sudo apt-get -y install build-essential checkinstall unzip

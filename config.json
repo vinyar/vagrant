@@ -1,0 +1,5 @@
+## Save a copy of this file as `config.json`. Remove this comment
+## and update the following settings.
+{
+	"app":"/local/path/to/app/no/trailing/slash"
+}

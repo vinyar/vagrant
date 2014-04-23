@@ -1,0 +1,9 @@
+#!/bin/bash
+# Installs PhantomJS.
+
+cd /tmp
+wget https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-x86_64.tar.bz2
+tar -xvjf phantomjs-1.9.2-linux-x86_64.tar.bz2
+mv phantomjs-1.9.2-linux-x86_64 /opt/phantomjs
+ln -s /opt/phantomjs/bin/phantomjs /usr/bin/phantomjs
+

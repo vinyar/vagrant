@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Description:
+# Installs and configures Rinetd.
+# Manages port forwarding.
+#
+
+apt-get install -y rinetd
+
+sudo cat <<EOF  > /etc/rinetd.conf
+
+#
+# this is the configuration file for rinetd, the internet redirection server
+#
+# you may specify global allow and deny rules here
+# only ip addresses are matched, hostnames cannot be specified here
+# the wildcards you may use are * and ?
+#
+# allow 192.168.2.*
+# deny 192.168.2.1?
+
+
+#
+# forwarding rules come here
+#
+# you may specify allow and deny rules after a specific forwarding rule
+# to apply to only that forwarding rule
+#
+# bindadress    bindport  connectaddress  connectport
+
+# PostgreSQL
+# 127.0.0.1       5432    10.0.3.1        5432
+
+# Growl
+127.0.0.1       23053    10.0.3.1        23053
+
+# logging information
+logfile /var/log/rinetd.log
+
+# uncomment the following line if you want web-server style logfile format
+# logcommon
+
+EOF
+
+/etc/init.d/rinetd restart
