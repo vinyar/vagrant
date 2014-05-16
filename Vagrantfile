@@ -1,24 +1,44 @@
 Vagrant.configure("2") do |config|
 
-	require 'json'
+    # Read configuration from `config.json` file.
+    require 'json'
+    local_config_encoded = File.read('config.json')
+    local_config = JSON.parse(local_config_encoded)
 
-	config.vm.box = "precise64"
+    config.vm.provider "virtualbox" do |v|
+        v.name = local_config["id"]
+    end
 
-	config.cache.auto_detect = true
-	config.cache.enable_nfs  = true
+    # Set box type based on configuration. Defaults to `precise64` (Ubuntu).
+    # The URL that you see below is from Vagrant's own list of available boxes:
+    # http://www.vagrantbox.es/
+	if !local_config["box"]
+        config.vm.box = "precise64"
+        config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+	else
+        config.vm.box = local_config["box"]
+        config.vm.box_url = local_config["box_url"]
+	end
 
-	local_config_encoded = File.read('config.json')
-	local_config = JSON.parse(local_config_encoded)
+	# Set IP Address
+    config.vm.network :private_network, ip: local_config["guest_ip"]
 
-	config.vm.synced_folder local_config['app'], "/www/app/", nfs: true
-
-	# Enable private networking, set guest IP address
-	config.vm.network :private_network, ip: "10.0.3.20"
+    # Setup port forwarding
+    # config.vm.network :forwarded_port, guest: 3000, host: 3000
 
     # Enable SSH agent forwarding
     config.ssh.forward_agent = true
 
-	# Run provisioning scripts
-	config.vm.provision "shell", inline: "/vagrant/provision/main.sh $*"
+    # Loop through configured path maps.
+    local_config["paths"].each do |local_path, remote_path|
+        config.vm.synced_folder local_path, remote_path, nfs: true
+    end
+
+    provision_cmd = "/vagrant/provision.sh "
+    local_config["scripts"].each do |script, key|
+        provision_cmd = provision_cmd + script + " "
+    end
+
+    config.vm.provision "shell", inline: provision_cmd
 
 end

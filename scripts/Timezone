@@ -4,3 +4,5 @@
 
 mv /etc/localtime /etc/localtime.bak
 ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+
+exit 0

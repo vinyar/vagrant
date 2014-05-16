@@ -11,3 +11,5 @@ EOF
 
 gem install sass
 gem install compass
+
+exit 0

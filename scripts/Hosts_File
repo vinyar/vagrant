@@ -6,6 +6,7 @@ cat <<EOF  > /etc/hosts
 
 127.0.0.1   precise64
 127.0.0.1   localhost
-127.0.0.1   localhost.site
 
 EOF
+
+exit 0

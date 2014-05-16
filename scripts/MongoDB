@@ -4,9 +4,9 @@
 mkdir -p /data/db
 
 cd /tmp
-wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
-tar -xvzf mongodb-linux-x86_64-2.4.9.tgz
-mv mongodb-linux-x86_64-2.4.9 /opt/mongodb
+wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.1.tgz
+tar -xvzf mongodb-linux-x86_64-2.6.1.tgz
+mv mongodb-linux-x86_64-2.6.1 /opt/mongodb
 
 # Create Upstart service for gearman manager script.
 cat << 'EOF' > /etc/init/mongodb.conf
@@ -29,3 +29,5 @@ EOF
 
 # Start Upstart service.
 sudo start mongodb
+
+exit 0

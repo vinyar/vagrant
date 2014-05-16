@@ -1,5 +1,15 @@
-## Save a copy of this file as `config.json`. Remove this comment
-## and update the following settings.
 {
-	"app":"/local/path/to/app/no/trailing/slash"
+    "id": "vagrant_demo",
+	"guest_ip": "10.0.3.20",
+	"box": "precise64",
+	"box_url": "http://files.vagrantup.com/precise64.box",
+    "paths": {
+        "/local/path": "/remote/path"
+	},
+	"scripts": [
+	    "Init",
+	    "Timezone",
+	    "Hosts_File",
+	    "MongoDB"
+	]
 }
