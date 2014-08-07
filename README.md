@@ -1,48 +1,54 @@
-Getting Started
-========
+# Getting Started
 
-This file contains instructions on how to setup and manage your own instance of Vagrant.
-For additional information, see:
+This file contains instructions on how to setup and manage your own [Vagrant instance](http://vagrantup.com).
 
-	http://www.vagrantup.com/
+## Install Core Software
 
-Download & Install VirtualBox
+* Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* Install [Vagrant](http://downloads.vagrantup.com/)
 
-	https://www.virtualbox.org/wiki/Downloads
+## Install Vagrant Plugins
 
-Download & Install Vagrant
+```
+$ vagrant plugin install vagrant-cachier
+$ vagrant plugin install vagrant-hostsupdater
+$ vagrant plugin install vagrant-digitalocean
+```
 
-	http://downloads.vagrantup.com/
+## Creating Your First Server
 
-Download & Boot the Server
+Run the following command:
 
-	Open a terminal. CD into the "vagrant" directory (the directory that contains this
-	file) and run the following command:
+```
+$ vagrant up
+```
 
-	$ vagrant box add precise64 http://files.vagrantup.com/precise64.box
+This will create a simple, default box based off the configuration settings in `config.default.json`. You can completely replace this file with your own settings, or you can selectively overwrite specific settings by creating a separate config file at `config.json`.
 
-	Boot up an instance of the server by running the following command:
+## Connecting via SSH
 
-	$ vagrant up
+```
+$ vagrant ssh
+```
 
-You can SSH into your Vagrant instance by running:
+## Suspending the Server
 
-	$ vagrant ssh
+```
+$ vagrant suspend
+```
 
-Additional Notes
-========
+## Halting the Server
 
-When you are done working with your server instance, you should shut it down by running
-the following command:
+```
+$ vagrant halt
+```
 
-	$ vagrant suspend
+## Destroying the Server
 
-You can bring it back up again at any time by running:
+```
+$ vagrant destroy
+```
 
-	$ vagrant up
+## Configuration Examples
 
-In the event of a serious error, you may be required to completely destroy your instance
-of the server and rebuild it. To do that, run:
-
-	$ vagrant destroy
-	$ vagrant up
+See [./configuration-examples](configuration-examples). These should be used to replace `config.default.json` and `config.json`.

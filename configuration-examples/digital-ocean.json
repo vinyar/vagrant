@@ -1,0 +1,19 @@
+{
+    "servers": {
+        "modernweb": {
+            "provider_settings": {
+                "name": "vagrant_box",
+                "token": "",
+                "image": "Ubuntu 14.04 x64",
+                "region": "nyc2",
+                "size": "512mb",
+                "ssh_key_name": "General"
+            },
+            "paths": {
+            },
+            "timezone": "America/Chicago"
+        }
+    },
+    "private_key_path": "~/.ssh/id_rsa",
+    "provider": "digital_ocean"
+}

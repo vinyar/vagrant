@@ -1,15 +1,14 @@
 {
     "servers": {
-        "widget-maker-app": {
+        "modernweb": {
             "guest_ip": "10.0.3.20",
-            "guest_hostname": "widgetmaker.site",
+            "guest_hostname": "modernweb.site",
             "box": "trusty-webdev",
-            "box_url": "~/temp/trusty-webdev2.box",
+            "box_url": "https://dl.dropboxusercontent.com/u/832215/trusty-webdev.box",
             "paths": {
-                "~/repos/modern-web-site": "/opt/site"
             },
             "timezone": "America/Chicago",
-            "open_url": "http://widgetmaker.site"
+            "open_url": "http://modernweb.site"
         }
     }
 }
