@@ -12,8 +12,6 @@ require_relative "lib/os_detector.rb"
 local_config = loadConfig();
 local_config = detectOS(local_config)
 
-# puts ENV["VAGRANT_DEFAULT_PROVIDER"]
-
 Vagrant.configure("2") do |config|
     local_config = checkDefaults(local_config)
     local_config["servers"].each do |server_id, server|
