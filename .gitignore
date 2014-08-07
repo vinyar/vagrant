@@ -3,3 +3,4 @@
 .vagrant
 /provision.log
 /config.json
+/local-examples
