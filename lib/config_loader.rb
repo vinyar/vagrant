@@ -7,19 +7,21 @@ def loadConfig()
     config["override"]["servers"] = {}
     config["default"] = {}
 
-    if File.exists?( File.expand_path "./config.json" )
-        config["override"] = JSON.parse(File.read("config.json"))
+    if File.exists?(File.expand_path "./config.json")
+        config["override"] = JSON.parse(File.read(File.expand_path "./config.json"))
     end
 
-    if File.exists?( File.expand_path "./config.default.json" )
-        config["default"] = JSON.parse(File.read("config.default.json"))
+    if File.exists?(File.expand_path "./config.default.json")
+        config["default"] = JSON.parse(File.read(File.expand_path "./config.default.json"))
     end
 
     result = config["default"]
 
-    config["override"]["servers"].each do |key, value|
-        value.each do |server_key, server_value|
-            result["servers"][key][server_key] = server_value
+    if config["override"]["servers"]
+        config["override"]["servers"].each do |key, value|
+            value.each do |server_key, server_value|
+                result["servers"][key][server_key] = server_value
+            end
         end
     end
 
