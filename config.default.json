@@ -6,6 +6,7 @@
             "box": "trusty-webdev",
             "box_url": "https://dl.dropboxusercontent.com/u/832215/trusty-webdev.box",
             "paths": {
+                "~/repos/modern-web-site": "/opt/site"
             },
             "timezone": "America/Chicago",
             "open_url": "http://modernweb.site"

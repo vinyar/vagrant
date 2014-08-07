@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "CREATE DATABASE exampledb;" | mysql -u root
+
+cd /vagrant/files
+
+mysql -u root -h localhost exampledb < users.sql
+mysql -u root -h localhost servermail < email.sql
+mongoimport --db exampledb --collection users --jsonArray --file ./users.json
+
+exit 0

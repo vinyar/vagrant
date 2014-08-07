@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /opt/site
+forever start index.js
+
+exit 0
